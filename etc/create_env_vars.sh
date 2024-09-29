@@ -13,6 +13,7 @@ export ETC=$(dirname $SCRIPT)
 export WORKINGDIR=$(dirname $ETC)
 export TESTS=$WORKINGDIR/tests
 export DATALAB=$WORKINGDIR/datalab
+export DATA=$WORKINGDIR/data
 
 # Creates redundancy in python path when sourced out of integreated shell but makes sure works for external shell aswell
 if [[ "$OSTYPE" == "linux-gnu"* ]] || [[ "$OSTYPE" == "darwin"* ]]; then
@@ -35,7 +36,8 @@ else
 fi
 
 echo -e "\033[34m[4/4]\033[0m Exporting ${WORKINGDIR}/.env"
-python -m dotenv -f ${WORKINGDIR}/.env set WORKINGDIR ${WORKINGDIR}  > /dev/null 2>&1
+python -m dotenv -f ${WORKINGDIR}/.env set WORKINGDIR ${WORKINGDIR} > /dev/null 2>&1
 python -m dotenv -f ${WORKINGDIR}/.env set ETC ${ETC}   > /dev/null 2>&1
 python -m dotenv -f ${WORKINGDIR}/.env set PYTHONPATH ${PYTHONPATH}   > /dev/null 2>&1
 python -m dotenv -f ${WORKINGDIR}/.env set DATALAB ${DATALAB}  > /dev/null 2>&1
+python -m dotenv -f ${WORKINGDIR}/.env set DATA ${DATA} > /dev/null 2>&1
