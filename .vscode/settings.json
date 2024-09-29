@@ -20,5 +20,8 @@
   },
   "terminal.integrated.env.windows": {
     "PYTHONPATH": "${env:PYTHONPATH}:${workspaceFolder}\\src"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
   }
 }
