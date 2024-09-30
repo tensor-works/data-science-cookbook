@@ -42,9 +42,6 @@
 			"installDirectlyFromGitHubRelease": true,
 			"version": "latest"
 		},
-		"ghcr.io/devcontainers-contrib/features/git-lfs:1": {
-			"version": "latest"
-		},
 		"ghcr.io/devcontainers-contrib/features/yapf:2": {
 			"version": "latest"
 		},

@@ -1,6 +1,6 @@
 # Use a smaller CUDA runtime image instead of the devel version
 # Set the base image
-FROM tensorflow/tensorflow:2.14.0-gpu-jupyter
+FROM tensorpod/torch-and-tf2-on-cuda:pt2.3-cu118-tf2.14.0-py3.9-no-ta-tv
 
 # Configure OS encoding for stability
 ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
@@ -16,12 +16,6 @@ RUN apt-get update -q && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-# Install light weight mini-forge3
-RUN wget "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh" -O miniforge.sh -q && \
-    bash miniforge.sh -b -p /opt/conda && \
-    rm miniforge.sh && \
-    conda clean -afy
-
 # Set up the working directory
 WORKDIR /workdir
 RUN chmod -R +x /workdir
@@ -35,6 +29,3 @@ RUN conda env update -n base -f .devcontainer/linux-gnu.yml && \
 
 # Copy the rest of the files
 COPY . .
-
-# Force clean the pip cache
-RUN rm -rf /root/.cache/pip 
