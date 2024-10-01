@@ -17,3 +17,6 @@ dependencies:
   - nbformat>=4.2.0
   - shap
   - bayesian-optimization
+  - flask
+  - pip:
+    - HEBO>=0.2.0
