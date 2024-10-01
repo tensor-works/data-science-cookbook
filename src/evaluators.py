@@ -318,4 +318,4 @@ def evaluate_network_ray(X,
     auc_rocs.append(auc_roc)
     f1_scores.append(f1)
 
-    return auc_roc, auc_pr, f1
+    return auc_roc, auc_pr, f1, model
