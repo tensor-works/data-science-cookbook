@@ -1,0 +1,12 @@
+{
+  "batch_size": 32,
+  "dropout_rate": 0.03021433587605389,
+  "layer_sizes": [
+    16,
+    16
+  ],
+  "learning_rate": 0.001530370792110882,
+  "lr_decay_gamma": 0.19120566407789394,
+  "lr_decay_step": 5,
+  "weight_decay": 1.6254067653120255e-05
+}

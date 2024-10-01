@@ -1,0 +1,2 @@
+epoch,loss,roc_auc,pr_auc,f1_score,learning_rate,timestamp,checkpoint_dir_name,done,training_iteration,trial_id,date,time_this_iter_s,time_total_s,pid,hostname,node_ip,time_since_restore,iterations_since_restore
+0,772.4497884176672,0.796196356923828,0.28532213819303875,0.0,0.0001027494018632538,1727747988,,True,1,bfafe158,2024-10-01_01-59-48,1.882251501083374,1.882251501083374,9174,53f2743d91cf,172.17.0.2,1.882251501083374,1
