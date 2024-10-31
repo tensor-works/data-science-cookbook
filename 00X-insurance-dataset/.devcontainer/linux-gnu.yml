@@ -1,0 +1,22 @@
+channels:
+  - conda-forge
+  - defaults
+  - anaconda
+dependencies:
+  - numpy=1.26.0
+  - pandas
+  - pip=24.2
+  - ray-core
+  - ray-default
+  - ray-tune
+  - scikit-learn
+  - python-dotenv
+  - ipykernel
+  - seaborn
+  - plotly
+  - nbformat>=4.2.0
+  - shap
+  - bayesian-optimization
+  - flask
+  - pip:
+    - HEBO>=0.2.0

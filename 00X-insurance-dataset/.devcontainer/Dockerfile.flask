@@ -1,0 +1,41 @@
+# Use a smaller CUDA runtime image instead of the devel version
+# Set the base image
+FROM tensorpod/torch-and-tf2-on-cuda:pt2.3-cu118-tf2.14.0-py3.9-no-ta-tv
+
+# Configure OS encoding for stability
+ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
+# Point PATH to upcoming conda install
+ENV PATH=/opt/conda/bin:$PATH
+
+# Install minimal dependencies
+RUN apt-get update -q && \
+    apt-get install -q -y --no-install-recommends \
+    bzip2 \
+    ca-certificates \
+    wget && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+# Set up the working directory
+WORKDIR /workdir
+RUN chmod -R +x /workdir
+
+# Copy only the conda environment file first to leverage stable layer caching
+COPY .devcontainer/linux-gnu.yml .devcontainer/linux-gnu.yml
+
+# Update the conda environment file to include Flask and any other dependencies
+# Add lines like - flask
+#                - gunicorn (for a more robust server in production)
+
+# Install the conda environment
+RUN conda env update -n base -f .devcontainer/linux-gnu.yml && \
+    conda clean -afy
+
+# Copy the rest of the files
+COPY . .
+
+# Expose the port the app runs on
+EXPOSE 5000
+
+# Command to run the app using a production-grade server like gunicorn
+CMD ["gunicorn", "-b", "0.0.0.0:5000", "app:app"]
